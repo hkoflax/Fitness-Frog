@@ -6,22 +6,22 @@
 
 <h2>@ViewBag.Title</h2>
 
-@Html.ValidationSummary("The following errors were found:", new {@class="alert alert-danger"})
-
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary("The following errors were found:", new { @class = "alert alert-danger" })
+
     <div class="row">
 
         <div class="col-md-6">
 
             <div class="form-group">
-                @Html.LabelFor(m => m.Date, new {@class="control-label"})
-                @Html.TextBoxFor(m => m.Date,"{0:d}", new { @class="form-control datepicker"} )
+                @Html.LabelFor(m => m.Date, new { @class = "control-label" })
+                @Html.TextBoxFor(m => m.Date, "{0:d}", new { @class = "form-control datepicker" })
             </div>
 
             <div class="form-group">
                 @Html.LabelFor(m => m.ActivityId, new { @class = "control-label" })
-                @Html.DropDownListFor(m => m.ActivityId, (SelectList)ViewBag.ActivitiesSelectListitems,"",new { @class = "form-control" })
+                @Html.DropDownListFor(m => m.ActivityId, (SelectList)ViewBag.ActivitiesSelectListitems, "", new { @class = "form-control" })
             </div>
 
             <div class="form-group">
@@ -58,7 +58,7 @@
 
             <div class="form-group">
                 @Html.LabelFor(m => m.Notes, new { @class = "control-label" })
-                @Html.TextAreaFor(m => m.Notes,14,20, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.Notes, 14, 20, new { @class = "form-control" })
             </div>
 
         </div>
