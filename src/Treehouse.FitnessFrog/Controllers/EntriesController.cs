@@ -43,7 +43,7 @@ namespace Treehouse.FitnessFrog.Controllers
         {
             var entry = new Entry()
             {
-                Date = DateTime.Today,     
+                Date = DateTime.Today,
             };
             ViewBag.ActivitiesSelectListitems = new SelectList(Data.Data.Activities, "ID", "Name");
             return View(entry);
@@ -51,7 +51,14 @@ namespace Treehouse.FitnessFrog.Controllers
         [HttpPost]
         public ActionResult Add(Entry entry)
         {
-            if(ModelState.IsValid)
+            //if there arent any duration field validation errors
+            //then make sure that the duration is greater than 0.
+            if (ModelState.IsValidField("Duration") && entry.Duration <= 0)
+            {
+                ModelState.AddModelError("Duration", "The Durarion field value must be greater than 0");
+            }
+
+            if (ModelState.IsValid)
             {
                 _entriesRepository.AddEntry(entry);
                 return RedirectToAction("Index");
